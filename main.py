@@ -110,5 +110,6 @@ if __name__ == "__main__":
         pb_bytes = bytes(pv.verify_key)
         sol_addr = b58encode(pb_bytes).decode()
         logging.warning(f"成功: {sol_addr}")
-        Path(f"{sol_addr}.json").write_text(json.dumps(list(pv_bytes + pb_bytes)))
+        Path("output").mkdir(exist_ok=True)
+        Path(f"output/{sol_addr}.json").write_text(json.dumps(list(pv_bytes + pb_bytes)))
         time.sleep(0.1)
